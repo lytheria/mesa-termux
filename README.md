@@ -1,59 +1,49 @@
-`Mesa <https://mesa3d.org>`_ - The 3D Graphics Library
-======================================================
+# Mesa Graphics Drivers for Termux
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Termux](https://img.shields.io/badge/Environment-Termux-alpha.svg)](https://termux.dev)
+[![Platform: Android](https://img.shields.io/badge/Platform-Android-green.svg)](https://www.android.com)
 
-Source
-------
+A comprehensive guide and compilation toolkit for deploying, configuring, and optimizing the **Mesa 3D Graphics Library** within **Termux** environments. This project aims to bridge the gap between Android's hardware limitations and Linux desktop emulation, enabling high-performance hardware acceleration (OpenGL, Vulkan, OpenCL) for proot-distros, hardware-level wrappers, and standalone X11/Wayland applications.
 
-This repository lives at https://gitlab.freedesktop.org/mesa/mesa.
-Other repositories are likely forks, and code found there is not supported.
+---
 
+## Table of Contents
 
-Build & install
----------------
+- [Introduction](#introduction)
+- [Key Features](#key-features)
+- [Prerequisites](#prerequisites)
+- [Installation & Setup](#installation--setup)
+- [Configuration & Environment Variables](#configuration--environment-variables)
+- [Supported Hardware Drivers](#supported-hardware-drivers)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
 
-You can find more information in our documentation (`docs/install.rst
-<https://mesa3d.org/install.html>`_), but the recommended way is to use
-Meson (`docs/meson.rst <https://mesa3d.org/meson.html>`_):
+---
 
-.. code-block:: sh
+## Introduction
 
-  $ mkdir build
-  $ cd build
-  $ meson ..
-  $ sudo ninja install
+**Mesa** is the backbone of open-source graphics stacks on Linux. When operating within **Termux** (and extended rootless environments like PRoot or Chroot), standard Android Vulkan or OpenGL ES drivers are often inaccessible to native Linux binaries. 
 
+This repository provides optimized configuration patterns, build scripts, and environment setups to implement Mesa drivers—such as **Zink** (OpenGL over Vulkan), **Turnip** (Open-source Vulkan for Adreno), and **VirGL** (Virtual 3D GPU)—directly on Android devices via Termux. This enables running complex pipelines, hardware-accelerated emulators (e.g., Box64, Wine, Winlator components), and full desktop environments with optimal frame rates.
 
-Support
--------
+---
 
-Many Mesa devs hang on IRC; if you're not sure which channel is
-appropriate, you should ask your question on `OFTC's #dri-devel
-<irc://irc.oftc.net/dri-devel>`_, someone will redirect you if
-necessary.
-Remember that not everyone is in the same timezone as you, so it might
-take a while before someone qualified sees your question.
-To figure out who you're talking to, or which nick to ping for your
-question, check out `Who's Who on IRC
-<https://dri.freedesktop.org/wiki/WhosWho/>`_.
+## Key Features
 
-The next best option is to ask your question in an email to the
-mailing lists: `mesa-dev\@lists.freedesktop.org
-<https://lists.freedesktop.org/mailman/listinfo/mesa-dev>`_
+* **Turnip + Zink Pipeline:** Unlock true desktop OpenGL 4.6 compliance on Qualcomm Snapdragon devices by layering Zink on top of the open-source Turnip Vulkan driver.
+* **Software Rendering Fallbacks:** Integrated configurations for **LLVMpipe** and **Softpipe** when hardware-level drivers are unavailable or incompatible.
+* **VirGL Server Support:** Streamlined configurations for virtualized GPU acceleration across host-guest translation layers.
+* **Optimized Performance Tweaks:** Fine-tuned system properties and environment variables tailored for Android's unique memory and thermal management constraints.
 
+---
 
-Bug reports
------------
+## Prerequisites
 
-If you think something isn't working properly, please file a bug report
-(`docs/bugs.rst <https://mesa3d.org/bugs.html>`_).
+Before proceeding, ensure your Termux environment is up to date and the essential repositories are subscribed to:
 
-
-Contributing
-------------
-
-Contributions are welcome, and step-by-step instructions can be found in our
-documentation (`docs/submittingpatches.rst
-<https://mesa3d.org/submittingpatches.html>`_).
-
-Note that Mesa uses gitlab for patches submission, review and discussions.
+```bash
+pkg update && pkg upgrade -y
+pkg install x11-repo tur-repo -y
+pkg install termux-x11 && wget https://github.com/lytheria/mesa-termux/releases/download/stable/mesa-zink-opengl-23.0.4_aarch64.deb && dpkg -i mesa-zink-opengl-23.0.4_aarch64.deb
