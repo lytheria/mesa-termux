@@ -35,7 +35,7 @@ On the command line, Enter `opengl --zink` to use zink driver or `opengl --glvnd
 ---
 ## 📂 Prerequisites
 
-Before proceeding, ensure your Termux environment is up to date and the essential repositories are subscribed to. This  build use `libglvnd` as package name, so it will replace official termux `libglvnd` package.
+Before proceeding, ensure your Termux environment is up to date and the essential repositories are subscribed to. This  build use `libglvnd` as package name, so it will replace official Termux `libglvnd` package.
 
 ---
 ## 📥 Installation & Setup
