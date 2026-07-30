@@ -35,7 +35,7 @@ On the command line, Enter `zink` to use zink driver or `glvnd` to use GLVND. An
 ---
 ## 📂 Prerequisites
 
-Before proceeding, ensure your Termux environment is up to date and the essential repositories are subscribed to.
+Before proceeding, ensure your Termux environment is up to date and the essential repositories are subscribed to. This  build use `libglvnd` as package name, so it will replace official termux `libglvnd` package.
 
 ---
 ## 📥 Installation & Setup
