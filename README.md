@@ -24,7 +24,7 @@ A comprehensive guide and compilation toolkit for deploying, configuring, and op
 
 **Mesa** is the backbone of open-source graphics stacks on Linux. When operating within **Termux** (and extended rootless environments like PRoot or Chroot), standard Android Vulkan or OpenGL ES drivers are often inaccessible to native Linux binaries. 
 
-This repository provides optimized configuration patterns, build scripts, and environment setups to implement Mesa drivers—such as **Zink** (OpenGL over Vulkan), **Turnip** (Open-source Vulkan for Adreno), and **VirGL** (Virtual 3D GPU)—directly on Android devices via Termux. This enables running complex pipelines, hardware-accelerated emulators (e.g., Box64, Wine, Winlator components), and full desktop environments with optimal frame rates.
+This repository provides optimized configuration patterns, build scripts, and environment setups to implement Mesa drivers—such as **Zink** (OpenGL over Vulkan), **Turnip** (Open-source Vulkan for Adreno), and **VirGL** (Virtual 3D GPU)—directly on Android devices via Termux.
 
 ---
 
